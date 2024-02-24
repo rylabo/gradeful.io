@@ -1,0 +1,186 @@
+{    
+  "@version": 1.1,
+  "@base": "http://www.gradeful.io/",
+  "@vocab": "/",
+  "_id": "@id",
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "owl": "http://www.w3.org/2002/07/owl#",
+  "rational": "owl:rational",
+  "real": "owl:real",
+  "Literal": "rdfs:Literal",
+  "boolean": "xsd:boolean",
+  "byte": "xsd:byte",
+  "dateTime": "xsd:dateTime",
+  "dateTimeStamp": "xsd:dateTimeStamp",
+  "double": "xsd:double",
+  "float": "xsd:float",
+  "hexBinary": "xsd:hexBinary",
+  "int": "xsd:int",
+  "integer": "xsd:integer",
+  "language": "xsd:language",
+  "long": "xsd:long",
+  "nonNegativeInteger": "xsd:nonNegativeInteger",
+  "nonPositiveInteger": "xsd:nonPositiveInteger",
+  "normalizedString": "xsd:normalizedString",
+  "positiveInteger": "xsd:positiveInteger",
+  "short": "xsd:short",
+  "string": "xsd:string",
+  "token": "xsd:token",
+  "unsignedByte": "xsd:unsignedByte",
+  "unsignedInt": "xsd:unsignedInt",
+  "unsignedLong": "xsd:unsignedLong",
+  "unsignedShort": "xsd:unsignedShort",
+  "versionIRI": "owl:versionIRI",
+  "givenName": {
+    "@type": "@id"
+  },
+  "familyName": {
+    "@type": "@id"
+  },
+  "annotation": {
+    "@type": "xsd:token"
+  },
+  "nameToken": {
+    "@container": "@language"
+  },
+  "StoredClass": "gf:StoredClass",
+  "storedClassProperty": "gf:storedClassProperty",
+  "UnstoredClass": "gf:UnstoredClass",
+  "Outcome": "gf:Outcome",
+  "allValuesFrom": {
+    "@id": "owl:allValuesFrom",
+    "@type": "@vocab"
+  },
+  "disjointWith": {
+    "@id": "owl:disjointWith",
+    "@type": "@vocab"
+  },
+  "domain": {
+    "@id": "rdfs:domain",
+    "@type": "@vocab"
+  },
+  "equivalentClass": {
+    "@id": "owl:equivalentClass",
+    "@type": "@vocab"
+  },
+  "equivalentProperty": {
+    "@id": "owl:equivalentProperty",
+    "@type": "@vocab"
+  },
+  "hasKey": {
+    "@id": "owl:hasKey",
+    "@container": "@list",
+    "@type": "@id"
+  },
+  "intersectionOf": {
+    "@id": "owl:intersectionOf",
+    "@container": "@list",
+    "@type": "@id"
+  },
+  "inverseOf": {
+    "@id": "owl:inverseOf",
+    "@type": "@vocab"
+  },
+  "langRange": {
+    "@id": "rdf:langRange"
+  },
+  "maxExclusive": {
+    "@id": "xsd:maxExclusive"
+  },
+  "maxInclusive": {
+    "@id": "xsd:maxInclusive"
+  },
+  "maxLength": {
+    "@id": "xsd:maxLength"
+  },
+  "maxQualifiedCardinality": {
+    "@id": "owl:maxQualifiedCardinality", 
+    "@type": "nonNegativeInteger"
+  },
+  "minExclusive": {
+    "@id": "xsd:minExclusive"
+  },
+  "minInclusive": {
+    "@id": "xsd:minInclusive"
+  },
+  "minLength": {
+    "@id": "xsd:minLength"
+  },
+  "minQualifiedCardinality": {
+    "@id": "owl:minQualifiedCardinality", 
+    "@type": "nonNegativeInteger"
+  },
+  "onClass": {
+    "@id": "owl:onClass",
+    "@type": "@vocab"
+  },
+  "onDataRange": {
+    "@id": "owl:onDataRange",
+    "@type": "@vocab"
+  },
+  "onDatatype": {
+    "@id": "owl:onDatatype",
+    "@type": "@vocab"
+  },
+  "onProperty": {
+    "@id": "owl:onProperty",
+    "@type": "@vocab"
+  },
+  "pattern": {
+    "@id": "xsd:pattern"
+  },
+  "propertyDisjointWith": {
+    "@id": "owl:propertyDisjointWith",
+    "@type": "@vocab"
+  },
+  "qualifiedCardinality": {
+    "@id": "owl:qualifiedCardinality", 
+    "@type": "xsd:nonNegativeInteger"
+  },
+  "range": {
+    "@id": "rdfs:range",
+    "@type": "@vocab"
+  },
+  "someValuesFrom": {
+    "@id": "owl:someValuesFrom",
+    "@type": "@vocab"
+  },
+  "subClassOf": {
+    "@id": "rdfs:subClassOf",
+    "@type": "@vocab"
+  },
+  "subPropertyOf": {
+    "@id": "rdfs:subPropertyOf",
+    "@type": "@vocab"
+  },
+  "topDataProperty": {
+    "@id": "owl:topDataProperty"
+  },
+  "totalDigits": {
+    "@id": "xsd:totalDigits"
+  },
+  "unionOf": {
+    "@id": "owl:unionOf",
+    "@container": "@list",
+    "@type": "@id"
+  },
+  "withRestrictions": {
+    "@id": "owl:withRestrictions",
+    "@container": "@list",
+    "@type": "@id"
+  },
+  "AsymmetricProperty": "owl:AsymmetricProperty",
+  "Class": "owl:Class",
+  "Datatype": "rdfs:Datatype",
+  "DatatypeProperty": "owl:DatatypeProperty",
+  "FunctionalProperty": "owl:FunctionalProperty",
+  "GradeDescriptor" : "gf:GradeDescriptor",
+  "IrreflexiveProperty": "owl:IrreflexiveProperty",
+  "NamedIndividual": "owl:NamedIndividual",
+  "ObjectProperty": "owl:ObjectProperty",
+  "Ontology": "owl:Ontology",
+  "Restriction": "owl:Restriction",
+  "TransitiveProperty": "owl:TransitiveProperty"
+}

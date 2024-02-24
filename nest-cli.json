@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "monorepo": true,
+  "compilerOptions": {
+    "webpack": true
+  },
+  "projects": {
+    "rest-proxy": {
+      "type": "application",
+      "root": "apps/rest-proxy",
+      "entryFile": "main",
+      "sourceRoot": "apps/rest-proxy/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/rest-proxy/tsconfig.app.json"
+      }
+    },
+    "students": {
+      "type": "application",
+      "root": "apps/students",
+      "entryFile": "main",
+      "sourceRoot": "apps/students/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/students/tsconfig.app.json"
+      }
+    },
+    "groups": {
+      "type": "application",
+      "root": "apps/groups",
+      "entryFile": "main",
+      "sourceRoot": "apps/groups/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/groups/tsconfig.app.json"
+      }
+    },
+    "classes": {
+      "type": "application",
+      "root": "apps/classes",
+      "entryFile": "main",
+      "sourceRoot": "apps/classes/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/classes/tsconfig.app.json"
+      }
+    },
+    "attendace": {
+      "type": "application",
+      "root": "apps/attendace",
+      "entryFile": "main",
+      "sourceRoot": "apps/attendace/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/attendace/tsconfig.app.json"
+      }
+    },
+    "outcomes": {
+      "type": "application",
+      "root": "apps/outcomes",
+      "entryFile": "main",
+      "sourceRoot": "apps/outcomes/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/outcomes/tsconfig.app.json"
+      }
+    },
+    "people": {
+      "type": "application",
+      "root": "apps/people",
+      "entryFile": "main",
+      "sourceRoot": "apps/people/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/people/tsconfig.app.json",
+        "assets": [
+          "config/*",
+          "Dockerfile",
+          "../../docker-entrypoint.sh",
+          "../../wait-for-it.sh"
+        ]
+      }
+    },
+    "jsonld-framing": {
+      "type": "library",
+      "root": "libs/jsonld-framing",
+      "entryFile": "index",
+      "sourceRoot": "libs/jsonld-framing/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/jsonld-framing/tsconfig.lib.json"
+      }
+    },
+    "mongoose-utils": {
+      "type": "library",
+      "root": "libs/mongoose-utils",
+      "entryFile": "index",
+      "sourceRoot": "libs/mongoose-utils/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/mongoose-utils/tsconfig.lib.json"
+      }
+    }
+  }
+}
