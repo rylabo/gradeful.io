@@ -11,7 +11,7 @@
     "build:all": "npm run build:microservice rest-proxy people",
     "build:microservice": "./scripts/build-microservice.sh",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
-    "postinstall": "cd client/instruct && npm install",
+    "postinstall": "cd client/instruct-client && npm install",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

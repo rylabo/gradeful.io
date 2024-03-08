@@ -1,11 +1,4 @@
-<!--
-  [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-  [circleci-url]: https://circleci.com/gh/nestjs/nest
--->
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
+# Gradeful.io
 
 A multi-lingual attendance taking tool for educators in Japan that integrates in-class assessments.
 
@@ -13,13 +6,13 @@ A multi-lingual attendance taking tool for educators in Japan that integrates in
 
 The project consists of a backend implemented in Nest.js, a server-side, Angular-like framework, and a front-end implemented using the Next.js React framework. The server-side sits in the root folder, while the clients live in the `/client` subfolder.
 
-The remainder of this document refers to the server side implementation. For the front-end, refer to the `[/client/instruct](https://)`
+The remainder of this document refers to the server side implementation. For the front-end, refer to the
 
 ## Status
 
-Currently, the backend has been scaffolded, but not implemented. The front ens
+Currently, only the student microservice has been partially implemented, and will add students in the database.
 
-## Installation
+## Backend Installation
 
 Be sure to have Docker and Docker Compose installed.
 
@@ -30,32 +23,70 @@ $ docker compose build
 
 ## Running the backend
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
+Teh implemented portion of the backend can be started with
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ docker compose up people
 ```
 
-## 
+This will spin up several services;
 
-- Author - [Ryan Laboucane]
-- 
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- kafka (and dependencies)
+- people (and dependendencies)
+- rest-proxy (for API calls)
+- student-db
+
+These should succcessfully connect to kafka, and enable the `/students` endpoint.
+
+## Testing the Backend
+
+Once running, you can add students using POST an array of `Student` objects to the `/students` endpoint (on localhost:3000) by default.
+
+The form of the student object is as follows:
+
+```json
+{
+  "@type": [
+    "Student"
+  ],
+  "attendanceNumber": "1101",
+  "givenNames": [
+    {
+      "annotation": "ガクセイ",
+      "nameToken": {
+        "en": "Gakusei",
+        "ja": "学生"
+      }
+    }
+  ],
+  "familyNames": [
+    {
+      "annotation": "イチ",
+      "nameToken": {
+        "en": "Ichi",
+        "ja": "一"
+      }
+    }
+  ],
+}
+```
+
+## Known Issues
+
+The `people` microservice fails on startup, with the following message:
+
+```bash
+Waiting on broker
+wait-for-it.sh: waiting 15 seconds for broker:29092
+wait-for-it.sh: timeout occurred after waiting 15 seconds for broker:29092
+```
+
+Despite this, the message broker starts as normal, so simply try again:
+
+```bash
+$ docker compose up people
+```
+
+## Contributors
+
+- Author - Ryan Laboucane
