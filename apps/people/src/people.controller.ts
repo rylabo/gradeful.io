@@ -3,6 +3,7 @@ import {
   Inject,
   OnModuleDestroy,
   OnModuleInit,
+  Post,
 } from '@nestjs/common';
 import { EventPattern, Payload, ClientKafka } from '@nestjs/microservices';
 import { JsonLdDocument } from 'jsonld';
@@ -16,7 +17,8 @@ export class PeopleController {
     private readonly peopleService: PeopleService
   ) {}
 
-  @EventPattern('new-students')
+  // @EventPattern('new-students')
+  @Post('api/people')
   async addStudents(
     @Payload(JsonldFramingPipe) newStudents: JsonLdDocument,
   ): Promise<Document[]> {

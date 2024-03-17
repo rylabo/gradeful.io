@@ -33,14 +33,14 @@ This will spin up several services;
 
 - kafka (and dependencies)
 - people (and dependendencies)
-- rest-proxy (for API calls)
 - student-db
+- nginx
 
-These should succcessfully connect to kafka, and enable the `/students` endpoint.
+These should succcessfully connect to kafka, and enable the `/api/people` endpoint.
 
 ## Testing the Backend
 
-Once running, you can add students using POST an array of `Student` objects to the `/students` endpoint (on localhost:3000) by default.
+Once running, you can add students using POST an array of `Student` objects to the `/api/people` endpoint (on localhost:3000) by default.
 
 The form of the student object is as follows:
 

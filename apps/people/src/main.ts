@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { Partitioners } from 'kafkajs';
 import { PeopleModule } from './people.module';
 import * as dotenv from 'dotenv';
@@ -8,7 +8,8 @@ async function bootstrap() {
   try {
     dotenv.config();
   } catch {}
-  const app = await NestFactory.createMicroservice(PeopleModule, {
+  const app = await NestFactory.create(PeopleModule);
+  const microserviceKafka = app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.KAFKA,
     options: {
       client: {
@@ -23,6 +24,7 @@ async function bootstrap() {
       },
     },
   });
-  await app.listen();
+  await app.startAllMicroservices();
+  await app.listen(3000);
 }
 bootstrap();

@@ -1,11 +1,11 @@
 FROM node:gallium-alpine
 USER root
-RUN npm install -g npm@latest
+RUN npm install -g npm@9
 RUN apk add --no-cache bash
 USER node
 WORKDIR /home/node/app
 COPY --chown=node:node ./ ./
 RUN chmod +x ./wait-for-it.sh ./docker-entrypoint.sh
-RUN npm install
+RUN npm install --ignore-scripts
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
 CMD [ "node", "main.js" ]

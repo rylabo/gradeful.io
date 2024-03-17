@@ -127,6 +127,7 @@ services:
       - broker
       - rest-proxy
       - student-db
+      - nginx
     networks:
       gradeful-io_network:
         aliases:
