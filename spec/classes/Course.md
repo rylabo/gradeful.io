@@ -218,10 +218,6 @@ The object is considered invalid if:
          }],
       }},
       {"@type": ["Desk"]}
-   ], [
-      {},
-      {"@type": ["Desk"]},
-      {}
-   ]],
+   ]
 }
 ```
