@@ -4,8 +4,9 @@ An Object with an identifier.
 
 **Properties:**
 
-- [IdentifiedNode](#blanknode)
+- [IdentifiedNode](#identifiednode)
   - [@id](#id)
+  - [Example Object](#example-object)
 
 ## @id
 

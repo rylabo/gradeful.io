@@ -4,7 +4,7 @@ A course a teacher has just set up.
 
 **Properties:**
 
-- [CourseTemplate](#course)
+- [CourseTemplate](#coursetemplate)
   - [courseName](#coursename)
   - [gradeLevel](#gradelevel)
   - [classNumber](#classnumber)
@@ -140,8 +140,6 @@ An array representing a set of students enrolled in the course.
 See [the example in Student](Student.md#example-object)
 
 **Note:** All students in this array must be assigned a desk.
-
-
 
 ## Validation Notes
 

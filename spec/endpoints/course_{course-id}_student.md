@@ -2,7 +2,15 @@
 
 A collection of summary data for students enrolled in a course
 
-I/O
+- [/api/course/{course-id}/student](#apicoursecourse-idstudent)
+  - [I/O](#io)
+  - [Request Headers](#request-headers)
+  - [Request Body](#request-body)
+  - [Response Headers](#response-headers)
+  - [Response Body](#response-body)
+
+## I/O
+
 Instruct frontend <-> Course api
 
 **URL:** /api/course/{course-id}/student

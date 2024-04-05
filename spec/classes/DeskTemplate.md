@@ -1,6 +1,6 @@
 # DeskTemplate
 
-A planned Desk in a planned classroom layout, possibly to be assigned to a student. 
+A planned Desk in a planned classroom layout, possibly to be assigned to a student.
 
 **Properties:**
 

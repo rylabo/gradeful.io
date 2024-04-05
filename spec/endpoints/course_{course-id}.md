@@ -2,14 +2,18 @@
 
 Summary data about the collection of courses being taught by a user.
 
-## Table of Contents
-1. [I/O](#io)
-2. [Request Headers](#request-headers)
-3. [Request Body](#request-body)
+- [/api/course/{course-id}](#apicoursecourse-id)
+  - [I/O](#io)
+  - [Request Headers](#request-headers)
+  - [Request Body](#request-body)
+  - [Response Headers](#response-headers)
+  - [Response Body](#response-body)
+  - [Request Example](#request-example)
+  - [Response Body Example](#response-body-example)
 
 ## I/O
 
-PUT updates to a [Course](../classes/Course.md), or GET details of a [Course](../classes/Course.md). Archive the course with a DELETE. 
+PUT updates to a [Course](../classes/Course.md), or GET details of a [Course](../classes/Course.md). Archive the course with a DELETE.
 
 **URL:** /api/course_{course-id}
 
@@ -21,7 +25,7 @@ PUT updates to a [Course](../classes/Course.md), or GET details of a [Course](..
 |----------|-------------------------------------------|----------------------------|
 | `Accept` | `application/ld+json`, `application/json` | Optional. Defaults to JSON |
 
-## Request Body 
+## Request Body
 
 **Type:** [CourseUpdate](../classes/CourseTemplate.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
 
@@ -36,6 +40,7 @@ PUT updates to a [Course](../classes/Course.md), or GET details of a [Course](..
 **Type:** [Course](../classes/Course.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
 
 **Notes:**
+
 - New students are assigned new attendance numbers (the final two digits of their IRI) in order of Student.familyName.annotation, and then by Student.givenName.annotation, starting from the currect value of [Course.newAttendanceNumberIndex](../classes/Course.md#newattendancenumberindex).
 
 ## Request Example

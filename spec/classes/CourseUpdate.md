@@ -2,14 +2,14 @@
 
 **Properties:**
 
-- [Course](#course)
+- [CourseUpdate](#courseupdate)
   - [courseName](#coursename)
-  - [gradeLevel](#gradelevel)
   - [classNumber](#classnumber)
   - [deskRows](#deskrows)
   - [deskColumns](#deskcolumns)
   - [deskAt](#deskat)
   - [*enrollment*](#enrollment)
+  - [gradeLevel](#gradelevel)
   - [Validation Notes](#validation-notes)
   - [Example Object](#example-object)
 
@@ -138,7 +138,8 @@ An array representing a set of students enrolled in the course.
 
 See [the example in Student](Student.md#example-object)
 
-**Notes:** 
+**Notes:**
+
 - All students in this array must be assigned a desk.
 - Students are assigned attendance numbers (the final two digits of their IRI) in order of Student.familyName.annotation, and then by Student.givenName.annotation
 

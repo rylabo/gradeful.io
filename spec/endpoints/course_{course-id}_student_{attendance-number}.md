@@ -7,16 +7,10 @@ A `Student` object with a complete attendance history
 - [/api/course/{course-id}/student/{attendance-number}](#apicoursecourse-idstudentattendance-number)
   - [Table of Contents](#table-of-contents)
   - [I/O](#io)
-  - [Query Parameters](#query-parameters)
   - [Request Headers](#request-headers)
   - [Request Body](#request-body)
   - [Response Headers](#response-headers)
   - [Response Body](#response-body)
-  - [Properties](#properties)
-    - [Top Level](#top-level)
-    - [Name Objects](#name-objects)
-    - [Attendance Record Objects](#attendance-record-objects)
-      - [Example Object](#example-object)
 
 ## I/O
 

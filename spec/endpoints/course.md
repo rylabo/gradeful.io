@@ -2,16 +2,18 @@
 
 Summary data about the collection of courses being taught by a user.
 
-## Table of Contents
-1. [I/O](#io)
-2. [Request Headers](#request-headers)
-3. [Request Body](#request-body)
-
-
+- [/api/course](#apicourse)
+  - [I/O](#io)
+  - [Request Headers](#request-headers)
+  - [Request Body](#request-body)
+  - [Response Headers](#response-headers)
+  - [Response Body](#response-body)
+  - [Request Example](#request-example)
+  - [Response Body Example](#response-body-example)
 
 ## I/O
 
-Create a new [Course](../classes/Course.md) resources by POSTing a [CourseTemplate](../classes/CourseTemplate.md), or GET a list of [Course](../classes/Course.md)s 
+Create a new [Course](../classes/Course.md) resources by POSTing a [CourseTemplate](../classes/CourseTemplate.md), or GET a list of [Course](../classes/Course.md)s
 
 **URL:** /api/course
 
@@ -25,7 +27,7 @@ Get a summary of the user's courses.
 |----------|-------------------------------------------|----------------------------|
 | `Accept` | `application/ld+json`, `application/json` | Optional. Defaults to JSON |
 
-## Request Body 
+## Request Body
 
 **Type:** [CourseTemplate](../classes/CourseTemplate.md) & [BlankNode](../classes/BlankNode.md)
 
@@ -41,6 +43,7 @@ Get a summary of the user's courses.
 **Type:** [Course](../classes/Course.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
 
 **Notes:**
+
 - Students are assigned attendance numbers (the final two digits of their IRI) in order of Student.familyName.annotation, and then by Student.givenName.annotation
 
 ## Request Example
@@ -246,121 +249,3 @@ The request body for this class setup would look like this:
   }
 ]
 ```
-
-### /api/course/{course-id}/
-
-**Methods:** GET, PUT
-
-#### GET
-
-##### Request Headers
-
-#### PUT
-
-Used for updates to desk layout and enrollment
-
-### /api/course/{course-id}/attendance
-**Methods:** GET
-parameters
-academic year, term, month, date
-
-summary
-
-{}
-
-
-### /api/course/{course-id}/attendance/{yyyy}-{mm}-{dd}-{period}
-**Methods:** GET, PUT
-
-
-### /api/course/{course-id}/student
-
-### /api/course/{course-id}/student/{student-id}/
-
-### Request Headers
-
-Responses by default will be in JSON, but JSON-LD will be sent if the `Accept` header is specified.
-
-#### For JSON-LD responses (optional)
-
-```http
-Accept: application/ld+json
-```
-
-### Supported Methods
-
-#### GET
-
-Returns an array of Class objects representing the classes that a user teaches.
-
-##### Request Headers
-
-
-##### Response Body
-
-```json
-[
-  {
-    "@id": "https://www.gradeful.io/api/course/",
-    "@type": ["Course"],
-    "className": {
-      "key": "エイゴエンシュウ",
-      "ja": "英語演習",
-      "en": "English Practice"
-    },
-    "gradeLevel": "中1",
-    "classNumber": 1,
-    "deskLayout": {
-      "rows": 4,
-      "columns": 5
-    },
-    "desks": [
-      {
-        "@type": ["Desk"],
-        "position": {
-          "row": 1,
-          "column": 2
-        },
-        "assignedTo": "https://www.gradeful.io/api/course/{course-id}/student/{student-id}"
-      }
-    ],
-    "enrollment": [
-
-    ],
-    "attendanceRecords": [
-      {
-        "@id": "https://www.gradeful.io/api/student/{id}/attendance/{year}-{month}-{day}-{class_period}",
-        "@type": ["ClassAttendanceRecords"],
-        "attendance"
-      }
-    ]
-  }
-]
-```
-
-#### POST
-
-##### Request Headers
-
-
-##### Request Body
-
-## Response Headers
-
-JSON
-
-```http
-Content-Type: application/json
-```
-
-JSON-LD
-
-```http
-Content-Type: application/ld+json
-```
-
-## Response Body
-
-## Flow
-
-## Appendix A: JSON-LD Context
