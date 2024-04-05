@@ -6,14 +6,12 @@ Summary data about the collection of courses being taught by a user.
 1. [I/O](#io)
 2. [Request Headers](#request-headers)
 3. [Request Body](#request-body)
-   1. [Type `Course`](#type-course)
-   2. [Type `Desk`](#type-desk)
-   3. [Type `Student`](#type-desk)
+
 
 
 ## I/O
 
-Instruct frontend <-> Course api
+Create a new [Course](../classes/Course.md) resources by POSTing a [CourseTemplate](../classes/CourseTemplate.md), or GET a list of [Course](../classes/Course.md)s 
 
 **URL:** /api/course
 
@@ -23,14 +21,31 @@ Get a summary of the user's courses.
 
 ## Request Headers
 
-
-| Key | Values | Notes |
-|-----|------------|-------|
+| Key      | Values                                    | Notes                      |
+|----------|-------------------------------------------|----------------------------|
 | `Accept` | `application/ld+json`, `application/json` | Optional. Defaults to JSON |
 
-## Example Request Body
+## Request Body 
 
-This illustrates a case of a JHS first year course called "英語" in Japanese, and "English" in English. The seating plan is as follows.
+**Type:** [CourseTemplate](../classes/CourseTemplate.md) & [BlankNode](../classes/BlankNode.md)
+
+## Response Headers
+
+| Key      | Values                                                                          |
+|----------|---------------------------------------------------------------------------------|
+|`Location`|`https://.../api/course/{course-id}`                                             |
+|`Link`    |`<https://.../api/course/{course-id}/student/{student-id}>; rel="enrollment",...`|
+
+## Response Body
+
+**Type:** [Course](../classes/Course.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
+
+**Notes:**
+- Students are assigned attendance numbers (the final two digits of their IRI) in order of Student.familyName.annotation, and then by Student.givenName.annotation
+
+## Request Example
+
+Consider the case of a JHS first year course called "英語" in Japanese, and "English" in English. The seating plan is as follows.
 
 ![a seating plan example](./seatingPlanExample.svg)
 
@@ -109,62 +124,128 @@ The request body for this class setup would look like this:
       {},
       {"@type": ["Desk"]},
       {}
-   ]],
+   ]]
 }
 ```
 
-### Object Class
-
-#### `Course` Properties
-
-| Key | Type | Example| Constraints |
-|-----|------|--------|-------------|
-|courseName|`{`<br>`    "ja": string,`<br>` "en": string`<br>`}`| `{"ja": "数学", "en": "Math"}`| At least one of `"ja"` or `"en"` must be provided|
-|gradeLevel| `string` | `"高2"` | Must be one of `"小1"`, `"小2"`, `"小3"`,　`"小4"`, `"小5"`, `"小6"`, `"中1"`, `"中2"`, `"中3"`, `"高1"`, `"高2"`, `"高3"`|
-|classNumber| `number` | `1` | integer > 0 |
-|deskRows| `number` | `4` |    |
-|deskColumns| `number` | `5` |  |
-|desks| [`Desk[]`](#type-desk) | [(See type definition)](#type-desk)| desks.length &leq; deskRows * deskColumns |
-|enrollment| [`Student[]`](#type-student) | [(See type definition)](#type-student) | Array length &leq; desks.length|
-
-#### `Desk` Properties
-| Key    | Type     | Example | Constraints                       |
-|--------|----------|---------|-----------------------------------|
-| @id    | IRI      | `_:d13` | Has the template`_:d{row}{column}`|
-| row    | `number` | `3`     |  0 < `row` < `Course.deskRows`            |
-| column | `number` | `2`     |  0 < `column` < `Course.deskColumns`      |
-
-#### `Student` Properties
-
-## Response Headers
-
-| Key | Values |
-|-----|--------|
-|`Location`|`https://.../api/course/{course-id}`|
-|`Link`|`<https://.../api/course/{course-id}/student/{student-id}>; rel="enrollment",...`|
-
-## Response Body
+## Response Body Example
 
 ```json
-
-
+[
+  {
+    "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/",
+    "courseName": {
+      "ja": "英語",
+      "en": "English"
+    },
+    "gradeLevel": "中1",
+    "classNumber": 1,
+    "deskRows": 3,
+    "deskColumns": 3,
+    "deskAt": [[
+      {"@type": ["Desk"], "assignedTo": "https://.../api/course/NTE4NjU1NjAxNDM1/student/01/"},
+      {"@type": ["Desk"], "assignedTo": "https://.../api/course/NTE4NjU1NjAxNDM1/student/03/"},
+      {"@type": ["Desk"], "assignedTo": "https://.../api/course/NTE4NjU1NjAxNDM1/student/05/"}
+    ], [
+      {"@type": ["Desk"], "assignedTo": "https://.../api/course/NTE4NjU1NjAxNDM1/student/02/"},
+      {"@type": ["Desk"], "assignedTo": "https://.../api/course/NTE4NjU1NjAxNDM1/student/04/"},
+      {"@type": ["Desk"]},
+    ], [
+      {},
+      {"@type": ["Desk"]},
+      {}
+    ]],
+    "enrollment": [
+      {
+        "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/01/",
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "ケンタロ",
+          "nameToken": {"en": "Kentaro", "ja": "健太郎"}
+        }],
+        "familyNames": [{
+          "annotation": "サトウ",
+          "nameToken": {"en": "Satou", "ja": "佐藤"}
+        }],
+        "attendanceSummary": {
+          "absences": 0,
+          "lates": 2,
+          "excused": 4
+        }
+      },
+      {
+        "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/02/",
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "マリコ",
+          "nameToken": {"en": "Mariko", "ja": "まり子"}
+        }],
+        "familyNames": [{
+          "annotation": "スズキ",
+          "nameToken": {"en": "Suzuki", "ja": "鈴木"}
+        }],
+        "attendanceSummary": {
+          "absences": 0,
+          "lates": 0,
+          "excused": 0
+        }
+      },
+      { 
+        "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/03/",
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "ユウ",
+          "nameToken": {"en": "Yuu", "ja": "ゆう"}
+        }],
+        "familyNames": [{
+          "annotation": "タナカ",
+          "nameToken": {"en": "Tanaka", "ja": "田中"}
+        }],
+        "attendanceSummary": {
+          "absences": 0,
+          "lates": 0,
+          "excused": 0
+        }
+      },
+      {
+        "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/04/",
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "タロウ",
+          "nameToken": {"en": "Tarou", "ja": "太郎"}
+        }],
+        "familyNames": [{
+          "annotation": "ヤマダ",
+          "nameToken": {"en": "Yamada", "ja": "山田"}
+        }],
+        "attendanceSummary": {
+          "absences": 0,
+          "lates": 0,
+          "excused": 2
+        }
+      },
+      {
+        "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/05/",
+        "@type": ["Student"],
+        "givenName": {
+          "annotation": "ハナコ",
+          "nameToken": {"en": "Hanako", "ja": "花子"}
+        },
+        "familyName": {
+          "annotation": "ヤマダ",
+          "nameToken": {"en": "Yamada", "ja": "山田"}
+        },
+        "attendanceSummary": {
+          "absences": 0,
+          "lates": 1,
+          "excused": 0
+        }
+      }
+    ],
+    "newAttendanceNumberIndex": 6
+  }
+]
 ```
-
-#### POST
-
-Add a course for this user.
-
-##### Request Headers
-
-- Accept (Optional)
-  Used to optionally indicate the client wants JSON-LD
-
-  ```http
-  Accept: application/ld+json
-  ```
-
-##### Request Body
-
 
 ### /api/course/{course-id}/
 

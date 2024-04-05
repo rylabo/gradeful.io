@@ -10,9 +10,9 @@ A Desk in a classroom, possibly assigned to a student.
 
 ## *assignedTo*
 
-A Student or a NodeID, representing the owner of the desk.
+A Student, representing the owner of the desk.
 
-**Type:** [Student](./Student.md)
+**Type:** [Student](./Student.md) & [IdentifiedNode](./IdentifiedNode.md)
 
 **Example:**
 
@@ -21,8 +21,9 @@ See [the example in Student](Student.md#example-object)
 ## Example Object
 
 ```json
-{"@type": ["Desk"], 
+{ 
   "assignedTo":{
+    "@id": "https://.../api/course/NTE4NjU1NjAxNDM1/student/01/",
     "@type": ["Student"],
     "givenNames": [{
       "annotation": "ケンタロ",

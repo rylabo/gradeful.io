@@ -5,22 +5,11 @@ An object representing a single student in a class.
 **Properties:**
 
 - [Student](#student)
-  - [@id](#id)
   - [givenName](#givenname)
   - [familyName](#familyname)
   - [*attendanceSummary*](#attendancesummary)
   - [*attendanceHistory*](#attendancehistory)
   - [Example Object](#example-object)
-
-## @id
-
-A Node ID representing the Object identifier of this Object. This will have the URI template `"https://.../api/course/{course-id}/student/{attendance-number}/"`
-
-**Type:** NodeID
-
-**Example:**
-
-`"https://.../api/course/NTE4NjU1NjAxNDM1/student/02/"`
 
 ## givenName
 

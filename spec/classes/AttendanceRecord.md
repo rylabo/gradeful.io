@@ -16,7 +16,8 @@ A single attendance record for a single student.
 
 A Node ID referencing a Student object.
 
-**Type:** Node ID
+**Type:** [Student](./Student.md) & [IdentifiedNode](./IdentifiedNode.md)
+**Inverse Property:** [Student.attendanceHistory](./Student.md#attendancehistory)
 
 **Example:**
 `"https://.../api/course/NTE4NjU1NjAxNDM1/student/05/"`

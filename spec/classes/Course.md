@@ -15,6 +15,18 @@ A course a teacher is teaching.
   - [Validation Notes](#validation-notes)
   - [Example Object](#example-object)
 
+## newAttendanceNumberIndex
+
+An index used to track what attendance numbers are assigned to students.
+
+**Example:**
+If the highest assigned attendance number for a student was `6`, this will be set to `7`.
+
+**Type:** [GradeLevel](../types.md#gradelevel)
+
+**Example:**
+`"中2"`
+
 ## courseName
 
 The internationalized name of the course.
@@ -23,15 +35,6 @@ The internationalized name of the course.
 
 **Example:**
 See [the example in I18nNameToken](I18nNameToken.md#example-object)
-
-## gradeLevel
-
-The Japanese grade level of the course.
-
-**Type:** [GradeLevel](../types.md#gradelevel)
-
-**Example:**
-`"中2"`
 
 ## classNumber
 
@@ -133,13 +136,24 @@ Here is an example classroom with 5 desks and 4 students.
 
 An array representing a set of students enrolled in the course.
 
-**Type:** [Student](./Student.md)[]
+**Type:** [Student](./Student.md) & [IdentifiedNode](./IdentifiedNode.md)[]
 
 **Example:**
 
 See [the example in Student](Student.md#example-object)
 
-**Note:** All studnets in this array must be assigned a desk.
+**Notes:** 
+- All students in this array must be assigned a desk.
+- Students are assigned attendance numbers (the final two digits of their IRI) in order of Student.familyName.annotation, and then by Student.givenName.annotation
+
+## gradeLevel
+
+The Japanese grade level of the course.
+
+**Type:** [GradeLevel](../types.md#gradelevel)
+
+**Example:**
+`"中2"`
 
 ## Validation Notes
 
@@ -161,67 +175,67 @@ The object is considered invalid if:
   "deskRows": 3,
   "deskColumns": 3,
   "deskAt": [[
-      {"@type": ["Desk"], "assignedTo":{
-         "@type": ["Student"],
-         "givenNames": [{
-           "annotation": "ケンタロ",
-           "nameToken": {"en": "Kentaro", "ja": "健太郎"}
-         }],
-         "familyNames": [{
-           "annotation": "サトウ",
-           "nameToken": {"en": "Satou", "ja": "佐藤"}
-         }],
-      }},
-      {"@type": ["Desk"], "assignedTo":{
-         "@type": ["Student"],
-         "givenNames": [{
-           "annotation": "ユウ",
-           "nameToken": {"en": "Yuu", "ja": "ゆう"}
-         }],
-         "familyNames": [{
-           "annotation": "タナカ",
-           "nameToken": {"en": "Tanaka", "ja": "田中"}
-         }],
-      }},
-      {"@type": ["Desk"], "assignedTo":{
-         "@type": ["Student"],
-         "givenNames": [{
-           "annotation": "ハナコ",
-           "nameToken": {"en": "Hanako", "ja": "花子"}
-         }],
-         "familyNames": [{
-           "annotation": "ヤマダ",
-           "nameToken": {"en": "Yamada", "ja": "山田"}
-         }],
-      }}
-   ], [
-      {"@type": ["Desk"], "assignedTo":{
-         "@type": ["Student"],
-         "givenNames": [{
-           "annotation": "マリコ",
-           "nameToken": {"en": "Mariko", "ja": "まり子"}
-         }],
-         "familyNames": [{
-           "annotation": "スズキ",
-           "nameToken": {"en": "Suzuki", "ja": "鈴木"}
-         }],
-      }},
-      {"@type": ["Desk"], "assignedTo":{
-         "@type": ["Student"],
-         "givenNames": [{
-            "annotation": "タロウ",
-            "nameToken": {"en": "Tarou", "ja": "太郎"}
-         }],
-         "familyNames": [{
-            "annotation": "ヤマダ",
-            "nameToken": {"en": "Yamada", "ja": "山田"}
-         }],
-      }},
-      {"@type": ["Desk"]}
-   ], [
+    {"@type": ["Desk"], "assignedTo":{
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "ケンタロ",
+          "nameToken": {"en": "Kentaro", "ja": "健太郎"}
+        }],
+        "familyNames": [{
+          "annotation": "サトウ",
+          "nameToken": {"en": "Satou", "ja": "佐藤"}
+        }],
+    }},
+    {"@type": ["Desk"], "assignedTo":{
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "ユウ",
+          "nameToken": {"en": "Yuu", "ja": "ゆう"}
+        }],
+        "familyNames": [{
+          "annotation": "タナカ",
+          "nameToken": {"en": "Tanaka", "ja": "田中"}
+        }],
+    }},
+    {"@type": ["Desk"], "assignedTo":{
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "ハナコ",
+          "nameToken": {"en": "Hanako", "ja": "花子"}
+        }],
+        "familyNames": [{
+          "annotation": "ヤマダ",
+          "nameToken": {"en": "Yamada", "ja": "山田"}
+        }],
+    }}
+  ], [
+    {"@type": ["Desk"], "assignedTo":{
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "マリコ",
+          "nameToken": {"en": "Mariko", "ja": "まり子"}
+        }],
+        "familyNames": [{
+          "annotation": "スズキ",
+          "nameToken": {"en": "Suzuki", "ja": "鈴木"}
+        }],
+    }},
+    {"@type": ["Desk"], "assignedTo":{
+        "@type": ["Student"],
+        "givenNames": [{
+          "annotation": "タロウ",
+          "nameToken": {"en": "Tarou", "ja": "太郎"}
+        }],
+        "familyNames": [{
+          "annotation": "ヤマダ",
+          "nameToken": {"en": "Yamada", "ja": "山田"}
+        }],
+    }},
+    {"@type": ["Desk"]}
+  ], [
     {},
     {"@type": ["Desk"]},
     {}
-   ]]
+  ]]
 }
 ```

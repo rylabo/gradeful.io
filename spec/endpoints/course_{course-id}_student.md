@@ -118,34 +118,3 @@ An array of [`Student`](../classes/Student.md) objects.
   }
 ]
 ```
-
-## Properties
-
-### Top Level
-
-| Key               | Type     | Example                                                                 |
-|-------------------|----------|-------------------------------------------------------------------------|
-| @id               | IRI      | `"https://.../api/course/NTE4NjU1NjAxNDM1/student/05/"`                 |
-| @type             | string[] | **Must be** `["Student"]`                                               |
-| givenName         | Object   | [See Name Objects](#name-objects)                                       |
-| familyName        | Object   | [See Name Objects](#name-objects)                                       |
-| attendanceSummary | Object   | [See Attendance Summary Objects](attendance-summary-objects)            |
-
-### Name Objects
-
-| Key               | Type     | Example                                               |
-|-------------------|----------|-------------------------------------------------------|
-| annotation        | string   | `"ハナコ"`, `"マツザカ"`                                 |
-| nameToken         | Object   |                                                       |
-| nameToken.en      | String   | `"Hanako"`, `"Matsuzaka"`                             |
-| nameToken.ja      | String   | `"花子"`, `"松阪"`                                      |
-
-**Note:** Either nameToken.en or nameToken.ja must be provided.
-
-### Attendance Summary Objects
-
-| Key               | Type     | Example                                               |
-|-------------------|----------|-------------------------------------------------------|
-| absences          | number   | `1`, `0`, `20`                                        |
-| lates             | number   | `1`, `0`, `20`                                        |
-| excused           | number   | `1`, `0`, `20`                                        |
