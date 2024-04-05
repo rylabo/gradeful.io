@@ -24,13 +24,7 @@ Instruct frontend <-> Course api
 
 **URL:** /api/course/{course-id}/student/{attendance-number}
 
-**Methods:** GET
-
-## Query Parameters
-
-| Key               | Type     | Example                                                 |
-|-------------------|----------|---------------------------------------------------------|
-| getall            | boolean  | `true`                                                  |
+**Methods:** GET, PUT
 
 ## Request Headers
 
@@ -40,7 +34,8 @@ Instruct frontend <-> Course api
 
 ## Request Body
 
-Not Applicable
+**Type:** [Student](../classes/Student.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
+**Used Optional Properties:** [attendanceHistory](../classes/Student.md#attendancehistory)
 
 ## Response Headers
 
@@ -48,5 +43,5 @@ TBD
 
 ## Response Body
 
-A single `Student` object with the `attendanceHistory` property set.
-
+**Type:** [Student](../classes/Student.md) & [IdentifiedNode](../classes/IdentifiedNode.md)
+**Used Optional Properties:** [attendanceHistory](../classes/Student.md#attendancehistory)
